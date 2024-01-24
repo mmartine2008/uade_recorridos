@@ -6,21 +6,18 @@ public class Principal {
                 System.out.println("Grafos");
 
                 Grafo<String> g = new Grafo();
-                g.AgregaVertice("A");
-                g.AgregaVertice("B");
-                g.AgregaVertice("C");
-                g.AgregaVertice("D");
-                g.AgregaArco("A", "B");
-                g.AgregaArco("B", "C");
-                g.AgregaArco("A", "D");
-                g.AgregaArco("D", "C");
+                g.AgregaVertice("1");
+                g.AgregaVertice("2");
+                g.AgregaVertice("3");
+                g.AgregaVertice("4");
+                g.AgregaVertice("5");
 
-                g.Mostrar();
-                g.BorrarVertice("D");
-                g.BorrarArco("A", "D");
-                g.BorrarArco("D", "C");
-                g.Mostrar();
+                g.AgregaArco("1", "2");
+                g.AgregaArco("2", "5");
+                g.AgregaArco("2", "3");
+                g.AgregaArco("2", "4");
+                g.AgregaArco("3", "4");
 
-                g.MostrarAdyacentes("B");
+                g.iniciarVisitaPrimeroProfundidad();
         }    
 }

@@ -6,10 +6,12 @@ import java.util.List;
 public class Grafo<T> {
     private List<T> vertices;
     private List<Arco<T>> arcos;
+    private List<T> visitados;
 
     public Grafo() {
         this.vertices = new ArrayList<>();
         this.arcos = new ArrayList<>();
+        this.visitados = new ArrayList<>();
     }
 
     public Grafo<T> GrafoVacio() {
@@ -53,7 +55,6 @@ public class Grafo<T> {
             if (a.getDestino() == vertice) {
                 salida.add(a.getOrigen());
             }
-            System.out.println(arcos.get(i));
         }
 
         return salida;
@@ -81,6 +82,32 @@ public class Grafo<T> {
                 System.out.println(adyacentes.get(i));
         }         
     }
+
+    private void limpiarVisitados() {
+        this.visitados.clear();
+    }
+
+    public void iniciarVisitaPrimeroProfundidad() {
+        limpiarVisitados();
+        T primero = vertices.get(0);
+        profundidad(primero);
+    }
+
+    private void profundidad(T vertice) {
+        visitados.add(vertice);
+        System.out.println(vertice);
+
+        List<T> adyacentes = Adyacentes(vertice);
+
+        for (int i = 0; i < adyacentes.size(); i++) {
+            T w = adyacentes.get(i);
+            if (visitados.indexOf(w) == -1) {
+                profundidad(w);
+            }        
+        }         
+
+    }
+
 
     public void Mostrar() {
         MostrarVertices();
